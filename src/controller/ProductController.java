@@ -16,13 +16,9 @@ public class ProductController implements IProductController {
     }
 
     @Override
-    public int update(Integer id,
-                      String name,
-                      String description,
-                      Integer categoryID,
-                      Integer quantity
+    public int update(ProductModel productModel
                     ) {
-        return this.productDAO.update(id, name, description, categoryID, quantity);
+        return this.productDAO.update(productModel);
     }
     @Override
     public int delete(Integer id) {

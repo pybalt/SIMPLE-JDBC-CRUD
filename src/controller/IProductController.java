@@ -9,11 +9,7 @@ import java.util.List;
 public interface IProductController {
     final ProductDAO productDAO = null;
 
-    int update(Integer id,
-               String name,
-               String description,
-               Integer categoryID,
-               Integer quantity);
+    int update(ProductModel productModel);
 
     int delete(Integer id);
 

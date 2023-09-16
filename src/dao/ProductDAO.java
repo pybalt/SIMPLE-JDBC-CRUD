@@ -69,12 +69,7 @@ public class ProductDAO implements IProductDAO {
 
     }
 
-    public int update(
-            Integer id,
-            String name,
-            String description,
-            Integer categoryID,
-            Integer quantity){
+    public int update(ProductModel productModel){
         try{
             String sql = """
                     UPDATE PRODUCT SET NAME = ?, DESCRIPTION = ?,
@@ -82,11 +77,11 @@ public class ProductDAO implements IProductDAO {
                     """;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             try(preparedStatement){
-                preparedStatement.setString(1, name);
-                preparedStatement.setString(2, description);
-                preparedStatement.setInt(3, quantity);
-                preparedStatement.setInt(4, categoryID);
-                preparedStatement.setInt(5, id);
+                preparedStatement.setString(1, productModel.getName());
+                preparedStatement.setString(2, productModel.getDescription());
+                preparedStatement.setInt(3, productModel.getQuantity());
+                preparedStatement.setInt(4, productModel.getCategoryID());
+                preparedStatement.setInt(5, productModel.getId());
                 preparedStatement.executeUpdate();
                 return preparedStatement.getUpdateCount();
             }

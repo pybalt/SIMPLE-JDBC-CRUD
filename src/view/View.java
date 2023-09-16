@@ -101,47 +101,59 @@ public class View {
                             category.list().forEach(System.out::println);
                             int categoryID = Integer.parseInt(input("Set a new category"));
                             String description = input("Set a new description");
-                            product.update(
+                            ProductModel tempProduct = new ProductModel(
                                     productChosen.getId(),
                                     name,
                                     description,
                                     quantity,
                                     categoryID);
+                            product.update(tempProduct);
                         }else if(fieldToEdit == 4){
                             Integer categoryID = Integer.valueOf(input("Set a new category ID from the existing ones."));
                             category.list().forEach(System.out::println);
-                            product.update(
+                            ProductModel tempProduct = new ProductModel(
                                     productChosen.getId(),
                                     productChosen.getName(),
                                     productChosen.getDescription(),
                                     categoryID,
-                                    productChosen.getQuantity());
+                                    productChosen.getQuantity()
+                            );
+                            product.update(tempProduct);
                         }else if(fieldToEdit == 3){
                             Integer quantity = Integer.valueOf(input("Set a new quantity."));
-                            product.update(
+                            ProductModel tempProduct = new ProductModel(
                                     productChosen.getId(),
                                     productChosen.getName(),
                                     productChosen.getDescription(),
                                     productChosen.getCategoryID(),
                                     quantity
                             );
+                            product.update(
+                                tempProduct
+                            );
                         }else if (fieldToEdit == 2) {
                             String description = input("Set a new description.");
                             if (description.isEmpty() || description.isBlank()) throw new AssertionError();
-                            product.update(
+                            ProductModel tempProduct = new ProductModel(
                                     productChosen.getId(),
                                     productChosen.getName(),
                                     description,
                                     productChosen.getCategoryID(),
                                     productChosen.getQuantity()
                             );
+                            product.update(
+                                tempProduct
+                            );
                         }else if (fieldToEdit == 1) {
                             String name = input("Set a new name.");
-                            product.update(productChosen.getId(),
+                            ProductModel tempProduct = new ProductModel(
+                                    productChosen.getId(),
                                     name,
                                     productChosen.getDescription(),
                                     productChosen.getCategoryID(),
-                                    productChosen.getQuantity());
+                                    productChosen.getQuantity()
+                            );
+                            product.update(tempProduct);
                         }
                     }
                     case "3" -> {

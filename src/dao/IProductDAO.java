@@ -7,7 +7,6 @@ public interface IProductDAO {
     void insert(ProductModel product);
     List<ProductModel> list();
     int delete(Integer id);
-    int update(Integer id, String name, String description,
-               Integer categoryID, Integer quantity);
+    int update(ProductModel productModel);
     List<ProductModel> list(CategoryModel category);
 }
