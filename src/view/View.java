@@ -1,6 +1,8 @@
 package view;
 
 import controller.CategoryController;
+import controller.ICategoryController;
+import controller.IProductController;
 import controller.ProductController;
 import model.CategoryModel;
 import model.ProductModel;
@@ -44,8 +46,8 @@ class Menu {
     };
 }
 public class View {
-    private CategoryController category;
-    private ProductController product;
+    private ICategoryController category;
+    private IProductController product;
     private Scanner keyboard;
     public View(){
         this.category = new CategoryController();
@@ -74,7 +76,7 @@ public class View {
                         );
                         category.list().forEach(System.out::println);
                         int categoryID = Integer.parseInt(input("Choose a category."));
-                        product.save(tempProduct, categoryID);
+                        product.insert(tempProduct, categoryID);
                     }
                     case "2" -> {
                         System.out.println("You want to update a product.");
@@ -99,7 +101,7 @@ public class View {
                             category.list().forEach(System.out::println);
                             int categoryID = Integer.parseInt(input("Set a new category"));
                             String description = input("Set a new description");
-                            product.edit(
+                            product.update(
                                     productChosen.getId(),
                                     name,
                                     description,
@@ -108,7 +110,7 @@ public class View {
                         }else if(fieldToEdit == 4){
                             Integer categoryID = Integer.valueOf(input("Set a new category ID from the existing ones."));
                             category.list().forEach(System.out::println);
-                            product.edit(
+                            product.update(
                                     productChosen.getId(),
                                     productChosen.getName(),
                                     productChosen.getDescription(),
@@ -116,7 +118,7 @@ public class View {
                                     productChosen.getQuantity());
                         }else if(fieldToEdit == 3){
                             Integer quantity = Integer.valueOf(input("Set a new quantity."));
-                            product.edit(
+                            product.update(
                                     productChosen.getId(),
                                     productChosen.getName(),
                                     productChosen.getDescription(),
@@ -126,7 +128,7 @@ public class View {
                         }else if (fieldToEdit == 2) {
                             String description = input("Set a new description.");
                             if (description.isEmpty() || description.isBlank()) throw new AssertionError();
-                            product.edit(
+                            product.update(
                                     productChosen.getId(),
                                     productChosen.getName(),
                                     description,
@@ -135,7 +137,7 @@ public class View {
                             );
                         }else if (fieldToEdit == 1) {
                             String name = input("Set a new name.");
-                            product.edit(productChosen.getId(),
+                            product.update(productChosen.getId(),
                                     name,
                                     productChosen.getDescription(),
                                     productChosen.getCategoryID(),
@@ -147,7 +149,7 @@ public class View {
                         System.out.println("Let us take a look");
                         this.product.list().forEach(System.out::println);
                         Integer productID = Integer.valueOf(input("Select a product by providing its ID."));
-                        product.eliminate(productID);
+                        product.delete(productID);
                     }
                     case "4" -> {
                         product.list().forEach(System.out::println);

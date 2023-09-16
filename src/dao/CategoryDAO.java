@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDAO {
+public class CategoryDAO implements ICategoryDAO {
     private final Connection connection;
     public CategoryDAO(Connection connection){
         this.connection = connection;

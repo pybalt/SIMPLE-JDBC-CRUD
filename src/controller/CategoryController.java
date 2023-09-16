@@ -2,19 +2,12 @@ package controller;
 import java.util.List;
 
 import dao.CategoryDAO;
+import dao.ICategoryDAO;
 import factory.ConnectionFactory;
 import model.CategoryModel;
-interface ICategoryController {
-    List<CategoryModel> list();
-
-    void insert(CategoryModel tempProduct);
-
-    void update(CategoryModel categorySelected);
-    void delete(CategoryModel categoryModel);
-}
 
 public class CategoryController implements  ICategoryController{
-    private final CategoryDAO categoryDAO;
+    private final ICategoryDAO categoryDAO;
     public CategoryController(){
         ConnectionFactory connection = new ConnectionFactory();
         this.categoryDAO = new CategoryDAO(connection.getConnection());

@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO {
+public class ProductDAO implements IProductDAO {
     private final Connection connection;
     public ProductDAO(Connection connection){
         this.connection = connection;
@@ -68,7 +68,8 @@ public class ProductDAO {
         }
 
     }
-    public int edit(
+
+    public int update(
             Integer id,
             String name,
             String description,
