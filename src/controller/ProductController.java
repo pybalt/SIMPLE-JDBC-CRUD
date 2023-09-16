@@ -21,9 +21,6 @@ interface IProductController {
 }
 public class ProductController implements IProductController {
     private final ProductDAO productDAO;
-    public enum Field {
-        ID, NAME, DESCRIPTION, CATEGORY, QUANTITY
-    }
     public ProductController(){
         ConnectionFactory connection = new ConnectionFactory();
         this.productDAO = new ProductDAO(connection.getConnection());
